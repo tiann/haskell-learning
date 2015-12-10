@@ -13,7 +13,7 @@
 
 elementAt :: (Num b, Ord b)  => [a] -> b -> a
 elementAt [] _ = error "empty list"
-elementAt all@(x:xs) index
+elementAt (x:xs) index
     | index <= 0 = error "invalid index"
-    | index == 1 = head all
-    | otherwise = elementAt xs (index - 1)
+    | index == 1 = x
+    | otherwise = elementAt xs $ index - 1
