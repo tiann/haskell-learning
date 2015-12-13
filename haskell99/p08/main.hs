@@ -13,4 +13,5 @@
 --
 
 compress :: Eq a => [a] -> [a]
-compress = reverse . foldl (\acc x -> if x `elem` acc then acc else x:acc) []
+--compress = reverse . foldl (\acc x -> if x `elem` acc then acc else x:acc) []
+compress x = reverse $ foldl (\acc x -> if head acc == x then acc else x: acc) [head x] x
