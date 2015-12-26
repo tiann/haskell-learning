@@ -13,3 +13,5 @@ dupli :: [a] -> [a]
 dupli = foldr copy []
   where
     copy x acc = x: x: acc
+
+dupli' xs = xs >>= (\x -> [x, x])
