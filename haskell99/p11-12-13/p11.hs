@@ -51,3 +51,11 @@ decodeModified = concat . map decodeGroup where
 --
 
 encodeDirect :: Eq a => [a] -> [Group a]
+encodeDirect = foldr convert [] where
+  convert x [] = [Single x]
+  convert x all@((Single y):xs) 
+    | x == y = (Multiple 2 x): xs
+    | otherwise = (Single x): all
+  convert x all@((Multiple num y): xs)
+    | x == y = (Multiple (num + 1) x): xs
+    | otherwise = (Single x): all
