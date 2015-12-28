@@ -20,3 +20,6 @@ split' xs num = foldr splitHelper ([], []) (zip xs [1..])
     splitHelper (x, index) (l1, l2)
       | index <= num = (x: l1, l2)
       | otherwise = (l1, x: l2)
+
+split'' ::[a] -> Int -> ([a], [a])
+split'' = flip splitAt
